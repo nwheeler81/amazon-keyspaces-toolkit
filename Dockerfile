@@ -21,6 +21,16 @@ RUN mkdir $CASSANDRA_HOME && \
     mkdir $AWS_KEYSPACES_WORKING_DIR/bin && \
     mkdir $CQLSHRC_HOME
 
+#Snappy SETUP
+RUN yum install -y python-pip
+RUN yum install -y python-tools
+RUN yum install -y gcc
+RUN yum install -y gcc-c++
+RUN yum install -y snappy-devel
+RUN yum install -y snappy
+RUN yum install -y python-devel
+RUN pip install --user python-snappy
+
 #CQLSH SETUP
 COPY cassandra/LICENSE.txt $CASSANDRA_HOME
 COPY cassandra/bin/cqlsh cassandra/bin/cqlsh.py $CASSANDRA_HOME/bin/

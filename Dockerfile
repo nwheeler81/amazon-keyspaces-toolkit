@@ -10,7 +10,16 @@ ENV CQLSHRC_HOME=$AWS_KEYSPACES_WORKING_DIR/.cassandra
 WORKDIR $AWS_KEYSPACES_WORKING_DIR
 
 #Install jq
-RUN yum install -y jq && yum clean all
+RUN yum install -y jq && \
+    yum install -y python-pip && \
+    yum install -y python-tools && \
+    yum install -y gcc && \
+    yum install -y gcc-c++ && \
+    yum install -y snappy-devel && \
+    yum install -y snappy && \
+    yum install -y python-devel && \
+    pip install --user python-snappy && \
+    yum clean all
 
 #setup directory structure
 RUN mkdir $CASSANDRA_HOME && \
@@ -20,16 +29,6 @@ RUN mkdir $CASSANDRA_HOME && \
     mkdir $CASSANDRA_HOME/pylib/cqlshlib  && \
     mkdir $AWS_KEYSPACES_WORKING_DIR/bin && \
     mkdir $CQLSHRC_HOME
-
-#Snappy SETUP
-RUN yum install -y python-pip
-RUN yum install -y python-tools
-RUN yum install -y gcc
-RUN yum install -y gcc-c++
-RUN yum install -y snappy-devel
-RUN yum install -y snappy
-RUN yum install -y python-devel
-RUN pip install --user python-snappy
 
 #CQLSH SETUP
 COPY cassandra/LICENSE.txt $CASSANDRA_HOME

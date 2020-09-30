@@ -38,6 +38,7 @@ COPY cassandra/lib/*.zip $CASSANDRA_HOME/lib/
 
 #toolkit helpers
 COPY bin/ $AWS_KEYSPACES_WORKING_DIR/bin/
+RUN chmod +x $AWS_KEYSPACES_WORKING_DIR/bin/cqlsh-experimental.sh
 
 #Setup pem file
 ADD https://www.amazontrust.com/repository/AmazonRootCA1.pem $CQLSHRC_HOME/AmazonRootCA1.pem

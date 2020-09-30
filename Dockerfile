@@ -18,6 +18,8 @@ RUN yum install -y jq && \
     yum install -y python-devel && \
     pip install --no-cache-dir --user python-snappy && \
     yum clean all
+    
+RUN rm -rf /var/cache/yum    
 
 #setup directory structure
 RUN mkdir $CASSANDRA_HOME && \

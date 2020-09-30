@@ -18,7 +18,8 @@ RUN yum install -y jq && \
     yum install -y snappy-devel && \
     yum install -y snappy && \
     yum install -y python-devel && \
-    pip install --user python-snappy && \
+    pip install --no-cache-dir option --user python-snappy && \
+    
     yum clean all
 
 #setup directory structure

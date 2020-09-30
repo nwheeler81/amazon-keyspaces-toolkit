@@ -12,7 +12,7 @@ WORKDIR $AWS_KEYSPACES_WORKING_DIR
 #Install jq
 RUN yum install -y jq && \
     yum install -y python-pip && \
-    yum install -y python-tools && \
+#   yum install -y python-tools && \
     yum install -y gcc && \
     yum install -y gcc-c++ && \
     yum install -y snappy-devel && \
